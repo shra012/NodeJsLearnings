@@ -9,7 +9,7 @@
   },
   "mongodb": {
     "atlas": {
-      "hostname": "xxxxxxxx.ywqrahd.mongodb.net",
+      "hostname": "hiruzen.ywqrahd.mongodb.net",
       "username": "shra012",
       "params": "retryWrites=true&w=majority"
     }
