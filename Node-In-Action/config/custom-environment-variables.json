@@ -1,0 +1,12 @@
+{
+  "weather": {
+    "open-weather-map": {
+      "current-weather-api-key": "OPEN_WEATHER_CURRENT_WEATHER_API_KEY"
+    }
+  },
+  "mongodb": {
+    "atlas": {
+      "password": "MONGO_PASSWORD"
+    }
+  }
+}

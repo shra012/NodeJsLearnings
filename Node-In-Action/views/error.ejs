@@ -1,0 +1,7 @@
+<%- include('header'); -%>
+<% if(!message){ %>
+  <h3>403 Page Not Found</h3>
+ <% } else{ %>
+   <h3><%= status %> <%= message %></h3>
+<% } %>
+<%- include('footer'); -%>

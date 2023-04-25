@@ -1,0 +1,17 @@
+{
+  "node-in-action": {
+    "description": "The app has all the code that I have written as part of the book"
+  },
+  "weather": {
+    "open-weather-map": {
+      "current-weather-url": "https://api.openweathermap.org/data/2.5/weather"
+    }
+  },
+  "mongodb": {
+    "atlas": {
+      "hostname": "xxxxxxxx.ywqrahd.mongodb.net",
+      "username": "shra012",
+      "params": "retryWrites=true&w=majority"
+    }
+  }
+}
