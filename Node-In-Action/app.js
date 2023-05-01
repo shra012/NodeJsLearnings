@@ -5,20 +5,24 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session')
 const logger = require('morgan');
 const flash = require('connect-flash');
+const passport = require('passport');
+const config = require("config");
+const mongoose = require('mongoose');
+const app = express();
 
 const indexRouter = require('./routes/index');
 const weatherRouter = require('./routes/weather');
 const randomRouter = require('./routes/random');
 const usersRouter = require('./routes/users');
-const config = require("config");
-const mongoose = require('mongoose');
-const app = express();
+const setUpPassport = require('./helpers/setUpPassport');
 
 // initialize database connection
+// mongodb+srv://shra012:xxxxxxx@hiruzen.ywqrahd.mongodb.net/?retryWrites=true&w=majority
 mongoose
     .connect(`mongodb+srv://${config.get('mongodb.atlas.username')}:${config.get('mongodb.atlas.password')}@${config.get('mongodb.atlas.hostname')}/?${config.get('mongodb.atlas.params')}`)
-    .catch(error => console.log(error))
-// mongodb+srv://shra012:xxxxxxx@hiruzen.ywqrahd.mongodb.net/?retryWrites=true&w=majority
+    .catch(error => console.log(error));
+setUpPassport();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -34,6 +38,8 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
