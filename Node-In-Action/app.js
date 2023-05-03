@@ -47,6 +47,17 @@ app.use('/', indexRouter);
 app.use('/weather', weatherRouter);
 app.use('/random', randomRouter);
 app.use('/users', usersRouter);
+
+app.get('/user-agent', (req,res) => {
+  const userAgent = req.headers['user-agent'] || "none";
+  if(req.accepts("html")){
+    res.render("user-agent",{userAgent: userAgent});
+  } else {
+    res.type('text')
+    res.send(req.headers['user-agent']);
+  }
+});
+
 app.get(/^\/users\/(\d+)$/, (req,res) => {
   const userId = parseInt(req.params[0]);
   res.send(`Got user with id ${userId}`);
@@ -58,7 +69,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
